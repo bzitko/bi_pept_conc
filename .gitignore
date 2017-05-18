@@ -1,12 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-<<<<<<< HEAD
-<<<<<<< HEAD
 documentation/
-=======
->>>>>>> 30789b20bb4c3c8de887854347b71f5d37f56949
-=======
->>>>>>> 30789b20bb4c3c8de887854347b71f5d37f56949
 *.py[cod]
 *$py.class
 
