@@ -62,7 +62,7 @@ def _calc():
             extinction, mw = "", ""
         data["values"]["m{}_extinction".format(model_num)] = str(extinction)
         data["values"]["mw"] = str(mw)
-        print("**** MW", mw)
+
 
     # 2. GET DATA
     calculate2 = calculate1
@@ -150,6 +150,9 @@ def index():
 def stylesheets(filename):
     return static_file('{}.css'.format(filename), root='css')
 
-#print(models)
+@route('/js/<filename>.js')
+def stylesheets(filename):
+    return static_file('{}.js'.format(filename), root='js')
+
 
 run(host='0.0.0.0', port=8080)

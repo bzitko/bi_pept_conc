@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/custom.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/modal.js"></script>
 
 
 <script type="text/javascript">
@@ -178,6 +179,29 @@
             <h5>Peptide concentration - estimate by weight</h5>
 
             <div class="row">
+                <div class="modal modal-open">
+                <div class="modal-inner">
+                <div class="modal-content">
+                    <div class="modal-close-icon">
+                    <a href="javascript:void(0)" class="close-modal"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="modal-content-inner">
+                        <h4>This is the heading</h4>
+                        <p>Donec volutpat nisi nisl, sit amet facilisis enim lobortis sed. </p>  
+                    </div>
+                    <hr class="modal-buttons-seperator">
+                    <div class="modal-buttons">
+                        <button class="button close-modal">Cancel</button>
+                        <button class="button button-primary close-modal">OK</button>
+                    </div>
+                </div>
+                </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
                 <div class="two columns">
                     <label for="mw">MW</label>
                 </div>
@@ -185,7 +209,10 @@
                     <input name="mw" readonly="readonly" type="text" class="u-full-width" />
                 </div>
                 <div class="one columns">Da</div>
-                <div class="two columns"><span id="mw"></span></div>
+                <div class="two columns">
+                    <button class="button open-modal">Launch modal window</button>
+                    <span id="mw"></span>
+                </div>
             </div>
 
             <div class="row">
