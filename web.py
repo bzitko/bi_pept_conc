@@ -1,5 +1,6 @@
 from bottle import route, run, template, static_file, request
 import json
+import os
 from conc_cal import *
 
 
@@ -140,11 +141,21 @@ def _calc():
 
 @route('/run')
 def index():
+
+    #read info files
+    infos = {}
+    infofiles_path = "/".join(os.path.abspath(__file__).split("/")[:-1] + ["info"])
+    for infofile in os.listdir(infofiles_path):
+        name = int(infofile.split(".")[0])
+        infofile = infofiles_path + "/" + infofile
+        infos[name] = template(open(infofile).read())
+
     return template(open("web.tpl").read(),
         request=request,
         models=models,
         Model=Model,
-        Constants=Constants)
+        Constants=Constants,
+        infos=infos)
 
 @route('/css/<filename>.css')
 def stylesheets(filename):
@@ -153,6 +164,10 @@ def stylesheets(filename):
 @route('/js/<filename>.js')
 def stylesheets(filename):
     return static_file('{}.js'.format(filename), root='js')
+
+
+
+
 
 
 run(host='0.0.0.0', port=8080)

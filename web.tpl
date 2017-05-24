@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/modal.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/js/modal.js"></script>
@@ -91,6 +92,45 @@
 
 
 <body>
+
+        <div id="modal_mw" class="modal">
+        <div class="modal-inner">
+        <div class="modal-content">
+            <div class="modal-close-icon">
+            <a href="javascript:void(0)" class="close-modal"><i class="fa fa-times" aria-hidden="true"></i></a>
+            </div>
+            <div class="modal-content-inner">
+                <h4>Peptide molecular weight</h4>
+                <p>Peptide molecular weight was calculated based on the average molecular weight of each amino acid obtained from <a href="http://www.matrixscience.com/help/aa_help.html" target="blank">Mascot software homepage</a>.</p>  
+            </div>
+            <hr class="modal-buttons-seperator">
+            <div class="modal-buttons">
+                <button class="button button-primary close-modal">OK</button>
+            </div>
+        </div>
+        </div>
+        </div>
+
+
+        <% for model_id in sorted(models): %>
+        <div id="modal_{{model_id}}" class="modal">
+        <div class="modal-inner">
+        <div class="modal-content">
+            <div class="modal-close-icon">
+            <a href="javascript:void(0)" class="close-modal"><i class="fa fa-times" aria-hidden="true"></i></a>
+            </div>
+            <div class="modal-content-inner">
+                {{ !infos[model_id] }}  
+            </div>
+            <hr class="modal-buttons-seperator">
+            <div class="modal-buttons">
+                <button class="button button-primary close-modal">OK</button>
+            </div>
+        </div>
+        </div>
+        </div>
+        <% end %>
+
 
     <div class="container">
         <div class="row">
@@ -166,7 +206,7 @@
                     <input name="m{{model_id}}_extinction" type="text" readonly="readonly" class="u-full-width" />
                 </div>
                 <div class="one columns">cm<sup>-1</sup></div>
-                <div class="two columns"></div>
+                <div class="two columns"><button class="button-primary open-modal" data="modal_{{model_id}}">info</button></div>
             </div>
 
         </div>
@@ -175,29 +215,11 @@
   <!-- Concetration by Weight
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
+
         <div class="docs-section" style="background: #c0c0c0">
             <h5>Peptide concentration - estimate by weight</h5>
 
-            <div class="row">
-                <div class="modal modal-open">
-                <div class="modal-inner">
-                <div class="modal-content">
-                    <div class="modal-close-icon">
-                    <a href="javascript:void(0)" class="close-modal"><i class="fa fa-times" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="modal-content-inner">
-                        <h4>This is the heading</h4>
-                        <p>Donec volutpat nisi nisl, sit amet facilisis enim lobortis sed. </p>  
-                    </div>
-                    <hr class="modal-buttons-seperator">
-                    <div class="modal-buttons">
-                        <button class="button close-modal">Cancel</button>
-                        <button class="button button-primary close-modal">OK</button>
-                    </div>
-                </div>
-                </div>
-                </div>
-            </div>
+           
 
 
 
@@ -210,7 +232,7 @@
                 </div>
                 <div class="one columns">Da</div>
                 <div class="two columns">
-                    <button class="button open-modal">Launch modal window</button>
+                    <button class="button-primary open-modal" data="modal_mw">info</button>
                     <span id="mw"></span>
                 </div>
             </div>

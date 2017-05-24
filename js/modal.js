@@ -5,22 +5,22 @@ var closeButtons = $('.close-modal');
 // set open modal behaviour
 
 $('.open-modal').on('click', function() {
-  modal.toggleClass('modal-open');
+	var modal_id = $(this).attr("data");
+	var modal_c = $("#" + modal_id);
+  	modal_c.addClass('modal-open');
 });
-// set close modal behaviour
 
-/*
-for (i = 0; i < closeButtons.length; ++i) {
-  closeButtons[i].addEventListener('click', function() {
-    modal.toggleClass('modal-open');
-	});
-}
-*/
+// set close modal behaviour
+$.each(closeButtons, function(i, closeButton){
+	$(closeButton).on('click', function(){
+		modal.removeClass('modal-open');
+	})
+});
 
 
 // close modal if clicked outside content area
 $('.modal-inner').on('click', function() {
-  modal.toggleClass('modal-open');
+  modal.removeClass('modal-open');
 });
 
 // prevent modal inner from closing parent when clicked
